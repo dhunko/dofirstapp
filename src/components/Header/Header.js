@@ -1,4 +1,6 @@
 import React from 'react';
+import "./header.css";
+
 function LoggedInHeaderBlock(props) {
   return (
     <React.Fragment>

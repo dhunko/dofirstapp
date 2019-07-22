@@ -1,0 +1,14 @@
+body {
+    min-height: 100%;
+    background: rgba(0, 0, 0, .05);
+  }
+  .btn + .btn  {
+    margin-left: 14px;
+  }
+  .cover-page {
+    background: url(../../img/make-your-plan-highlight.png) right center no-repeat;
+    text-align: right;
+    padding: 150px 0;
+    width: 70vw;
+    margin: 120px auto;
+  }

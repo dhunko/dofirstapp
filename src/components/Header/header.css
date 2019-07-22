@@ -1,0 +1,15 @@
+header {
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    z-index: 5;
+  }
+  .logo span {
+    color: aqua;
+    font-weight: 800;
+  }
+  .nav {
+    text-align: right;
+  }
