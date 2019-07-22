@@ -35,3 +35,7 @@ footer {
   left: 0;
   right: 0;
 }
+
+.btn + .btn  {
+  margin-left: 14px;
+}
