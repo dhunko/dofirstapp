@@ -7,11 +7,14 @@ import Main from './components/Main';
 import ModuleSignIn from './components/ModuleSignIn';
 import ModuleSignUp from './components/ModuleSignUp';
 
-function App() {
+
+
+
+function App({loggedIn = false, userName = "Owner"}) {
     return (
       <div className="App">
-        <Header />
-        <Main />
+        <Header loggedInUser = {loggedIn} name = {userName} />
+        <Main loggedInUser = {loggedIn} />
         <Footer />
         <ModuleSignIn />
         <ModuleSignUp />
