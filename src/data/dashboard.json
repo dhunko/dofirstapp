@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "test dashboard",
+    "authorId": 1,
+    "goals": [
+      {
+        "goalId": 1,
+        "goalName": "some text",
+        "isUrgent": 1,
+        "isImportant": 1,
+        "isDone": 0
+      },
+      {
+        "goalId": 2,
+        "goalName": "some text",
+        "isUrgent": 0,
+        "isImportant": 1,
+        "isDone": 0
+      }
+    ]
+  }
+]

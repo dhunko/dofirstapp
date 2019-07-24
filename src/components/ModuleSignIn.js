@@ -1,6 +1,71 @@
 import React from 'react';
 
-function ModuleSignIn () {
+export default class ModuleSignIn extends React.Component {
+  getUsersDB () {
+    /*let usersData;
+    if (localStorage.getItem("loggedInUser") == null) {
+      const url = "./src/data/users.json";
+      console.log(url)
+      fetch(url, {
+        headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+  
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        localStorage.setItem("loggedInUser", JSON.stringify(data));
+        usersData = data;
+      })
+    } else {
+      usersData = JSON.parse(localStorage.getItem("loggedInUser"));
+      
+      
+    }*/
+    let usersData = [
+      {
+        "userId": 1,
+        "userName": "test",
+        "userEmail": "test@test.com",
+        "isAdmin": 1,
+        "password": "test123"
+      },
+      {
+        "userId": 2,
+        "userName": "test2",
+        "userEmail": "test2@test.com",
+        "isAdmin": 0,
+        "password": "test123"
+      }
+    ];
+    localStorage.setItem("usersData", JSON.stringify(usersData));
+
+    //let loggedInUserData = JSON.parse(localStorage.getItem("loggedInUser"));
+    return usersData;
+  }
+
+  logInUser () {
+    let userdb = this.getUsersDB();
+    let email = document.querySelector('#loginEmail1').value;
+    let password = document.querySelector('#loginPassword1').value;
+    let appState = {};
+
+    for (let i = 0; i < userdb.length; i++) {
+      if (userdb[i].userEmail === email && userdb[i].password === password) {
+        localStorage.setItem("loggedInUser", JSON.stringify(userdb[i]));
+        appState.loggedIn = true;
+        appState.userName = userdb[i].userName;
+        localStorage.setItem("appState", JSON.stringify(appState));
+        break;
+      }
+    }
+    window.location.reload();
+  }
+
+  render() {
     return (
       <div className="modal fade" id="login" tabIndex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
         <div className="modal-dialog" role="document">
@@ -16,14 +81,14 @@ function ModuleSignIn () {
                   <input type="password" className="form-control" id="loginPassword1" placeholder="Password"/>
                 </div>
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Sign in</button>
+                <button type="button" className="btn btn-primary" onClick={this.logInUser.bind(this)}>Sign in</button>
             </div>
           </div>
         </div>
       </div>
     );
+  }
 }
 
-export default ModuleSignIn;
 
 
