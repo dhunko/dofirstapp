@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 export default class ModuleSignIn extends React.Component {
   getUsersDB () {
@@ -62,7 +64,8 @@ export default class ModuleSignIn extends React.Component {
         break;
       }
     }
-    window.location.reload();
+    document.querySelector('.modal.fade.show').click();
+    ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
   }
 
   render() {

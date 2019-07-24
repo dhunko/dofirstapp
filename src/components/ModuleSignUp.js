@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 export default class ModuleSignUp extends React.Component {
-  /*getUsersDB () {
+  getUsersDB () {
     let usersData = [
       {
         "userId": 1,
@@ -22,11 +24,14 @@ export default class ModuleSignUp extends React.Component {
     return usersData;
   }
 
-  signUpNewUser () {
+  signUpNewUser() {
     let userdb = this.getUsersDB();
-    let name = document.querySelector('#registrateName').value;
-    let email = document.querySelector('#loginEmail1').value;
-    let password = document.querySelector('#loginPassword1').value;
+    let name = 'test';
+    //if (document.querySelector('#registrateName').value !== undefined) name = document.querySelector('#registrateName').value;
+    let email = 'test';
+    //if (document.querySelector('#loginEmail1').value !== null) email = document.querySelector('#loginEmail1').value;
+    let password = 'test';
+    //if (document.querySelector('#loginPassword1').value !== null) password = document.querySelector('#loginPassword1').value;
     let appState = {};
 
     for (let i = 0; i < userdb.length; i++) {
@@ -45,9 +50,10 @@ export default class ModuleSignUp extends React.Component {
         localStorage.setItem("usersData", JSON.stringify(userdb));
         break;
       }
+      document.querySelector('.modal.fade.show').click();
+      ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
     }
-    window.location.reload();
-  }*/
+  }
 
   render() {
     return (
@@ -71,7 +77,7 @@ export default class ModuleSignUp extends React.Component {
                     </div>
                   </form>
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Sign Up</button>
+              <button type="button" className="btn btn-primary" onClick={this.signUpNewUser()}>Sign Up</button>
             </div>
           </div>
         </div>
