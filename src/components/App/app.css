@@ -12,3 +12,11 @@ body {
     width: 90vw;
     margin: 20px auto;
   }
+  * .btn-primary {
+    background-color: #08d0d0;
+    border-color: #0eb7b7;
+  }
+  * .btn-primary:hover {
+    background-color: #0eb7b7;
+    border-color: #0eb7b7;
+  }

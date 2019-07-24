@@ -1,0 +1,25 @@
+main {
+  padding: 50px 0;
+}
+.dashboardContent {
+  padding: 0;
+  border-radius: 5px;
+}
+.dashboardContent .row {
+  margin: 0;
+}
+.dashboardBlock {
+  min-height: 120px;
+}
+.dashboardBlockINu {
+  background: rgba(255, 0, 0, .2);
+}
+.dashboardBlockIU {
+  background: rgba(255, 0, 0, .4);
+}
+.dashboardBlockNiU {
+  background: rgba(255, 0, 0, .3);
+}
+.dashboardBlockNiNu {
+  background: rgba(255, 0, 0, .1);
+}

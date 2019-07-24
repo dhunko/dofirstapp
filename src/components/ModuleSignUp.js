@@ -29,9 +29,8 @@ export default class ModuleSignUp extends React.Component {
     let email = document.querySelector('#registrateEmail1').value;
     let password = document.querySelector('#registratePassword1').value;
     let appState = {};
-
-    for (let i = 0; i < userdb.length; i++) {
-      if (userdb[i].userEmail !== email) {
+    let checkDB = userdb.every(el => el.userEmail !== email);
+      if (checkDB === true) {
         userdb.push({
           "userId": userdb.length + 1,
           "userName": name,
@@ -39,7 +38,7 @@ export default class ModuleSignUp extends React.Component {
           "isAdmin": 0,
           "password": password
         });
-        localStorage.setItem("loggedInUser", JSON.stringify(userdb[i]));
+        localStorage.setItem("loggedInUser", JSON.stringify(userdb));
         appState.loggedIn = true;
         appState.userName = name;
         localStorage.setItem("appState", JSON.stringify(appState));
@@ -47,9 +46,7 @@ export default class ModuleSignUp extends React.Component {
         localStorage.setItem("usersData", JSON.stringify(userdb));
         document.querySelector('.modal.fade.show').click();
         ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
-        break;
       }
-    }
   }
 
   render() {
