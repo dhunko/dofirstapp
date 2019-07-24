@@ -7,11 +7,11 @@ import ModuleSignIn from '../ModuleSignIn';
 import ModuleSignUp from '../ModuleSignUp';
 
 function App({loggedIn = false, userName = "Owner"}) {
-    let stateObj = JSON.parse(localStorage.getItem("appState"));
+    /*let stateObj = JSON.parse(localStorage.getItem("appState"));
     if (stateObj !== undefined) {
-      /*loggedIn = stateObj.loggedIn;
-      userName = stateObj.userName;*/
-    }
+      loggedIn = stateObj.loggedIn;
+      userName = stateObj.userName;
+    }*/
     return (
       <React.Fragment>
         <Header loggedInUser = {loggedIn} name = {userName} />

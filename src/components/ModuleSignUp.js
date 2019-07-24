@@ -20,38 +20,35 @@ export default class ModuleSignUp extends React.Component {
         "password": "test123"
       }
     ];
-    localStorage.setItem("usersData", JSON.stringify(usersData));
     return usersData;
   }
 
   signUpNewUser() {
     let userdb = this.getUsersDB();
-    let name = 'test';
-    //if (document.querySelector('#registrateName').value !== undefined) name = document.querySelector('#registrateName').value;
-    let email = 'test';
-    //if (document.querySelector('#loginEmail1').value !== null) email = document.querySelector('#loginEmail1').value;
-    let password = 'test';
-    //if (document.querySelector('#loginPassword1').value !== null) password = document.querySelector('#loginPassword1').value;
+    let name = document.querySelector('#registrateName').value;
+    let email = document.querySelector('#registrateEmail1').value;
+    let password = document.querySelector('#registratePassword1').value;
     let appState = {};
 
     for (let i = 0; i < userdb.length; i++) {
       if (userdb[i].userEmail !== email) {
         userdb.push({
-        "userId": userdb.length + 1,
-        "userName": name,
-        "userEmail": email,
-        "isAdmin": 0,
-        "password": password
-      });
+          "userId": userdb.length + 1,
+          "userName": name,
+          "userEmail": email,
+          "isAdmin": 0,
+          "password": password
+        });
         localStorage.setItem("loggedInUser", JSON.stringify(userdb[i]));
         appState.loggedIn = true;
-        appState.userName = userdb[i].userName;
+        appState.userName = name;
         localStorage.setItem("appState", JSON.stringify(appState));
+        //send updated data to DB
         localStorage.setItem("usersData", JSON.stringify(userdb));
+        document.querySelector('.modal.fade.show').click();
+        ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
         break;
       }
-      document.querySelector('.modal.fade.show').click();
-      ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
     }
   }
 
@@ -77,7 +74,7 @@ export default class ModuleSignUp extends React.Component {
                     </div>
                   </form>
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={this.signUpNewUser()}>Sign Up</button>
+              <button type="button" className="btn btn-primary" onClick={this.signUpNewUser.bind(this)}>Sign Up</button>
             </div>
           </div>
         </div>

@@ -6,7 +6,9 @@ function LoggedInHeaderBlock(props) {
     <React.Fragment>
       <span>Hello, {props.name}</span>
       <button type="button" className="btn btn-primary" onClick={() => {
-        localStorage.removeItem('appState'); window.location.reload();
+          localStorage.removeItem('appState'); 
+          localStorage.removeItem('loggedInUser'); 
+          window.location.reload();
         }}>
           Log Out
       </button>

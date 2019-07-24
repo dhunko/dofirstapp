@@ -43,9 +43,6 @@ export default class ModuleSignIn extends React.Component {
         "password": "test123"
       }
     ];
-    localStorage.setItem("usersData", JSON.stringify(usersData));
-
-    //let loggedInUserData = JSON.parse(localStorage.getItem("loggedInUser"));
     return usersData;
   }
 
@@ -54,18 +51,17 @@ export default class ModuleSignIn extends React.Component {
     let email = document.querySelector('#loginEmail1').value;
     let password = document.querySelector('#loginPassword1').value;
     let appState = {};
-
     for (let i = 0; i < userdb.length; i++) {
       if (userdb[i].userEmail === email && userdb[i].password === password) {
         localStorage.setItem("loggedInUser", JSON.stringify(userdb[i]));
         appState.loggedIn = true;
         appState.userName = userdb[i].userName;
         localStorage.setItem("appState", JSON.stringify(appState));
+        document.querySelector('.modal.fade.show').click();
+        ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
         break;
       }
     }
-    document.querySelector('.modal.fade.show').click();
-    ReactDOM.render(<App loggedIn={true} userName={appState.userName} />, document.getElementById('root'));
   }
 
   render() {
